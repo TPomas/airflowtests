@@ -28,6 +28,10 @@ def log_datasources_files():
     logging.info("🔧 Files in /mnt/datasources")
     for f in files:
         logging.info(f" - {f}")
+    files = os.listdir("/mnt/datasources/vast")
+    logging.info("🔧 Files in /mnt/datasources/vast")
+    for f in files:
+        logging.info(f" - {f}")
 
 # Define the DAG
 with DAG(
