@@ -25,7 +25,7 @@ def log_mount_points():
 # Function to log files in /mnt/datasources
 def log_datasources_files():  
 
-    paths = ["/", "/mnt", "/mnt/datasources", "/mnt/datasources/vast", "/mnt/datasources/vast/glfileshare"]
+    paths = ["/", "/mnt", "/mnt/user", "/mnt/shared", "/mnt/datasources", "/mnt/datasources/vast", "/mnt/datasources/vast/glfileshare"]
     
     for path in paths:
         files = os.listdir(path)
