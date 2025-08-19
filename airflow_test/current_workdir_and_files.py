@@ -10,28 +10,29 @@ def log_current_directory_and_files():
     cwd = os.getcwd()
     files = os.listdir(cwd)
 
-    logging.info(f"📁 Current Working Directory: {cwd}")
-    logging.info("📄 Files and directories:")
+    logging.info(f"Current Working Directory: {cwd}")
+    logging.info("Files and directories:")
     for f in files:
         logging.info(f" - {f}")
 
 # Function to log mount points
 def log_mount_points():
-    logging.info("🔧 Mounted File Systems:")
+    logging.info("Mounted File Systems:")
     partitions = psutil.disk_partitions(all=False)
     for p in partitions:
         logging.info(f" - Mount point: {p.mountpoint}, Device: {p.device}, FS Type: {p.fstype}")
 
 # Function to log files in /mnt/datasources
-def log_datasources_files():    
-    files = os.listdir("/mnt/datasources")
-    logging.info("🔧 Files in /mnt/datasources")
-    for f in files:
-        logging.info(f" - {f}")
-    files = os.listdir("/mnt/datasources/vast")
-    logging.info("🔧 Files in /mnt/datasources/vast")
-    for f in files:
-        logging.info(f" - {f}")
+def log_datasources_files():  
+
+    paths = ["/", "/mnt", "/mnt/datasources", "/mnt/datasources/vast", "/mnt/datasources/vast/glfileshare"]
+    
+    for path in paths:
+        files = os.listdir(path)
+        logging.info(f"Files in {path}")
+        for f in files:
+            logging.info(f" - {f}")
+
 
 # Define the DAG
 with DAG(
